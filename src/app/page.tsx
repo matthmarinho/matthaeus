@@ -1,101 +1,181 @@
-import Image from "next/image";
+"use client"
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./_components/ui/card"
+import { Button } from "./_components/ui/button"
+import Image from "next/image"
+import Link from "next/link"
+// import { Libre_Barcode_128 } from 'next/font/google'
+import { Switch } from "./_components/ui/switch"
+import { useState } from "react"
+
+// const barcode = Libre_Barcode_128({
+//   weight: "400",
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-barcode-128',
+// })
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isOn, setIsOn] = useState(true)
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className={`md:w-3/4 ${isOn ? "crt" : ""}`}>
+      <div className="flex flex-row space-x-2 px-4 pt-4">
+        <div className="flex w-full flex-row justify-between bg-primary">
+          <h1 className="text-nowrap px-2 pt-2 text-xl font-semibold text-accent-foreground">
+            ➜ matthaeus
+          </h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="flex items-center justify-center gap-2">
+          <p>CRT</p>
+          <Switch checked={isOn} onCheckedChange={setIsOn} />
+        </div>
+      </div>
+
+      {/* <BlinkBlocks /> */}
+
+      <div className="grid grid-flow-row gap-4 px-4 pt-4 md:grid-cols-3">
+        <div className="flex w-full flex-row md:col-span-2 md:col-start-3 md:row-start-1">
+          <div className="w-full bg-[repeating-linear-gradient(45deg,#fafafa,#fafafa_10px,transparent_10px,transparent_20px)]"></div>
+          <div className="flex w-fit flex-col justify-around bg-background pl-2">
+            <p className="leading-4">PERSONAL▪</p>
+            <p className="leading-4">PORTFOLIO</p>
+          </div>
+        </div>
+        <div className="md:col-span-2 md:row-span-3">
+          <Card>
+            <CardHeader>
+              <CardTitle>➜ ABOUT ME</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-row space-x-4">
+                <div className="relative h-[159px] w-full">
+                  <Image
+                    alt="Sabrino"
+                    fill
+                    className="object-cover"
+                    src="/pxArt.png"
+                  />
+                </div>
+
+                <p className="text-justify">
+                  Full stack developer, passionate about creating efficient,
+                  scalable solutions and delivering seamless user experiences.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+        <div className="flex w-full flex-row md:col-span-2 md:col-start-3 md:row-span-2 md:row-start-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>➜ RESUME</CardTitle>
+              <CardDescription>2024 CV</CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Button variant="outline" className="w-full" asChild>
+                <Link href={"/"}>DOWNLOAD</Link>
+              </Button>
+              <Button variant="outline" className="w-full" asChild>
+                <Link href={"/"}>VIEW</Link>
+              </Button>
+            </CardFooter>
+          </Card>
+
+          {/* <CardFooter>
+              <Image
+                alt="Download resume"
+                src="/download-alt-solid.svg"
+                width={18}
+                height={18}
+              />
+              <Image
+                alt="Download resume"
+                src="/eye-solid.svg"
+                width={18}
+                height={18}
+              />
+            </CardFooter> */}
+        </div>
+      </div>
+
+      {/* <div className="px-4 pt-4 flex flex-col gap-4 md:flex-row">
+        <div className="md:basis-1/2">
+          <Card>
+            <CardHeader>
+              <CardTitle>about me.</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>Full stack developer, passionate about creating efficient, scalable solutions
+                and delivering seamless user experiences.</p>
+            </CardContent>
+          </Card>
+        </div>
+        <div className="gap-4 flex flex-col grow">
+          <div className="w-full flex flex-row grow-0 bg-black">personal portfolio.</div>
+          <div className="w-full flex flex-row flex-auto bg-black">resume.</div>
+        </div>
+      </div> */}
+
+      <div className="grid grid-rows-3 gap-4 px-4 pt-4 md:grid-cols-6">
+        <div className="flex w-full flex-row">
+          <Button variant="outline" className="h-full w-full" asChild>
+            <Link href={"/"}>LINKEDIN</Link>
+          </Button>
+        </div>
+        <div className="col-start-1 row-start-2 flex w-full flex-row">
+          <Button variant="outline" className="h-full w-full" asChild>
+            <Link href={"/"}>GITHUB</Link>
+          </Button>
+        </div>
+        <div className="col-start-1 row-start-3 flex w-full flex-row">
+          <Button variant="outline" className="h-full w-full" asChild>
+            <Link href={"/"}>EMAIL</Link>
+          </Button>
+        </div>
+        <div className="col-span-2 col-start-2 row-span-3 row-start-1 flex w-full flex-row">
+          <Card>
+            <CardHeader>
+              <CardTitle>➜ TECH</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-justify">
+                Full stack developer, passionate about creating efficient,
+                scalable solutions and delivering seamless user experiences.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+        <div className="col-span-3 flex w-full flex-row bg-black md:col-start-4 md:row-span-3 md:row-start-1">
+          <Card>
+            <CardHeader>
+              <CardTitle>➜ EXPERIENCE</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-justify">
+                Full stack developer, passionate about creating efficient,
+                scalable solutions and delivering seamless user experiences.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      <div className="grid gap-4 px-4 pt-4 md:grid-cols-2">
+        <div className="flex w-full flex-row bg-black">project 1.</div>
+        <div className="flex w-full flex-row bg-black">project 2.</div>
+      </div>
+
+      {/* <h2 className="hero glitch layers font-retron" data-text="matthaeus."><span>matthaeus.</span></h2> */}
+      {/* <div title="matthaeus.">matthaeus.</div> */}
+      {/* <MiniBot /> */}
     </div>
-  );
+  )
 }
